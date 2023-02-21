@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+
+Exercice 4, TP2, MIN1 : Fontaine Hugo/ Alfonsi Jules.
+-->
+<html>
+    <head>
+        <title>Exercice 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- On associe un fichier CSS qui permet de définir la présentation -->
+        <link rel="stylesheet" type="text/css" title="design" href="stockage/fichier_css.css"/>
+        <!-- On  associe une image icone pour l'entête -->
+	    <link rel="icon" type="image/png" href="stockage/icone.png" /> 
+    </head>
+    <body>
+        <!--Logo Epf-->
+        <div id="epf">
+            <img src="stockage/logo_epf_0.png" alt="logo de l'EPF"/>
+        </div>  
+        <!--Début menu-->
+        <div id="menu">
+            <!--On définit la première image en dehors du tableau (sinon le tableau est trop grand en hauteur) -->
+            <img id="image-menu" src="stockage/home-button.png" alt="bouton home"/>
+            <!--Début du tableau menu -->
+            <table id="tmenu">
+                <tr>
+                    <!--Les images de séparateur sont dans 1 case sur 2 (pour séparer les textes)-->
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                    <td class="t-text">Intégration HTML</td>
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                    <td class="t-text">CSS</td>
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                    <td class="t-text">JavaScript</td>
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                    <td class="t-text">Php</td>
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                    <td class="t-text">Autres ...</td>
+                    <td><img src="stockage/menu-separator.png" alt="image séparateur"/></td>
+                </tr>
+            </table>
+            <!--Fin du tableau menu -->
+            <!--Image à modifier-->
+            <div class="fonction">
+                <div class ="imageTP">
+                    <img id="image" src="stockage/image_TP.png"  alt="bouton home" width=300px height="200px"  />
+                </div> 
+                <!--Formulaire pour modification -->
+                <div class="Formulaire">
+                <fieldset class="form">
+                    <legend> Propriétés d'une image </legend>
+                    <form class="champs">
+                       <input type="button" value ="Lire propriétés" Onclick="lire_Proprietes();" >
+                       </button>
+                         <input type="button" value="Ecrire propriétés" Onclick="ecrire_Proprietes();" /> <br><br>
+                          Bordure : <br>
+                         <input type="text" size="80" id="BordureID"/>
+                         <br>
+                         Hauteur : <br>
+                         <input type="text" size="80" id="HauteurID"/>
+                         <br>
+                         Largeur : <br>
+                         <input type="text" size="80" id="LargeurID"/>
+                         <br>
+                         Nom : <br>
+                         <input type="text" size="80" id="NomID"/>
+                         <br>
+                         Source : <br>
+                         <input type="text" size="80" id="SourceID"/>
+                     </form>
+                </fieldset>
+            </div>
+        </div>
+        </div>
+        <!--Fin corps-->
+        
+    </body>
+</html>
+<!--Javascript -->
+<script>
+    //Introduction des variables pour les fonctions
+        var Champ_source;
+        var Champ_largeur;
+        var Champ_hauteur;
+        var Champ_bordure;
+        var Champ_nom;
+        var img = document.querySelector("#image");
+        Champ_source = document.getElementById('SourceID');
+        Champ_hauteur = document.getElementById('HauteurID');
+        Champ_largeur = document.getElementById('LargeurID');
+        Champ_nom = document.getElementById('NomID');
+        Champ_bordure =document.getElementById('BordureID');
+        
+       
+    // Fonction pour modifier les propriétés de l'image
+    function ecrire_Proprietes() {
+ 
+     
+         
+         var myImg = document.getElementById('image');
+         if (myImg && myImg.style) {
+        myImg.style.height = ""+Champ_hauteur.value+"px";
+        myImg.style.width = ""+Champ_largeur.value+"px";
+        myImg.style.border = ""+Champ_bordure.value+"px solid";
+        
+
+          
+      }
+
+    }
+// Fonction pour obtenir les propriétés de l'image
+    function lire_Proprietes() {
+        
+        var source = image.src;
+        var nameImg = source.substring(source.lastIndexOf("/")+1,source.length);
+        var width = img.clientWidth;
+        var height = img.clientHeight;
+        var imageBorder = getComputedStyle(document.getElementById('image'),null).getPropertyValue('border-width');
+        
+        Champ_bordure.value = imageBorder.replace("px","");
+        Champ_hauteur.value = height;
+        Champ_largeur.value = width;
+        Champ_source.value = source;
+        Champ_nom.value = nameImg.replace(".png","");
+       
+        
+    }
+    
+  
+</script>
+    
